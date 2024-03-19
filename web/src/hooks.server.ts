@@ -4,7 +4,6 @@ import Pocketbase from 'pocketbase';
 const allowedHeaders = ['retry-after', 'content-type' ];
 
 export async function handle({ event, resolve }) {
-	console.log('Running server hook', PUBLIC_DATABASE);
 	event.locals.pb = new Pocketbase(PUBLIC_DATABASE);
 	event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
 

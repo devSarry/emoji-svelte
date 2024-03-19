@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { AppShell } from '@skeletonlabs/skeleton';
+	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+	import "../app.postcss";
 </script>
 
 <AppShell>
-	<svelte:fragment slot="header">Header</svelte:fragment>
-	<!-- (sidebarLeft) -->
-	<!-- (sidebarRight) -->
-	<!-- (pageHeader) -->
-	<!-- Router Slot -->
+	<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+		<svelte:fragment slot="lead">(icon)</svelte:fragment>
+		(title)
+		<svelte:fragment slot="trail">(actions)</svelte:fragment>
+	</AppBar>
+
 	<slot />
-	<!-- ---- / ---- -->
-	<!-- (pageFooter) -->
-	<!-- (footer) -->
+
 </AppShell>
