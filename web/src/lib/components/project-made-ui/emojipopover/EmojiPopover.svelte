@@ -1,14 +1,9 @@
 <script lang="ts">
 	import * as Popover from '$lib/components/ui/popover';
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
+	import { emojiStore } from '@/emojistore';
 
-   import { pb } from '$lib/pocketbase/client';
-
-    const getEmojis = async () => {
-        const record = await pb.collection('emojis').getList();
-        return emojis;
-    }
-   
+	import { pb } from '$lib/pocketbase/client';
 
 	let emojis = [
 		'✌',
@@ -111,7 +106,10 @@
 
 	async function selectEmoji(emoji: string) {
 		state.emoji = emoji;
-        await pb.collection('emojis').create({emoji: emoji});
+		console.log("Emoji selected: ", emoji);
+		emojiStore.update((s) => {
+			return [emoji, ...s];
+		});
 	}
 </script>
 
